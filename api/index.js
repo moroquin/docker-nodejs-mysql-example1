@@ -24,7 +24,7 @@ const con = mysql.createConnection({
 //prueba
 con.connect(function (err) {
     if (err) throw err;
-    console.log("Connected! :P");
+    console.log("Connected! :P hola a todos");
 });
 
 
@@ -52,8 +52,7 @@ app.get('/api/saludo', async (req, res) => {
             }
             else {
                 console.log("not error");
-                return res.status(202).json({ status: " conected" });
-
+                return res.status(202).json({ status: " todo bien" });
             }
 
         });
