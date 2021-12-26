@@ -18,8 +18,11 @@ La aplicación es sencilla tiene dos endpoints
 * **/api/saludo** : este endpoint intenta realizar una conexión con la base de datos, utilizando las variables de entorno que se han definido desde docker. 
 * La carpeta pública esta dentro de **/public** y servira para los archivos publicos. 
   * El javascript del lado del cliente únicamente intenta realizar una petición asincrona a la api, para corroborar la conexión. 
+* La aplicación utiliza nodemon.
 
 ## Acerca de Docker
+
+Para probar este proyecto debe descargar este repositorio, y ejecutar los siguientes comandos desde la carpeta raíz del mismo.
 
 ### Crear la imagen
 
@@ -35,16 +38,13 @@ docker build .
 Para ejecutar el contenedor puede:
 
 ```bash
-docker run -p 5000:5000  -e MYSQLHOST='**IPDELHOST**'  -e MYSQLUSER='**USUARIO**' -e MYSQLPASS='**PASSWORD**' -v "$(pwd)/api/:/app/api/" -v "$(pwd)/views/:/app/views/" -v "$(pwd)/public/:/app/public/" -it **HASHIMAGEN**
+docker run -p 5000:5000  -e MYSQLHOST='IPDELHOST'  -e MYSQLUSER='USUARIO' -e MYSQLPASS='PASSWORD' -v "$(pwd)/api/:/app/api/" -v "$(pwd)/views/:/app/views/" -v "$(pwd)/public/:/app/public/" -it HASHIMAGEN
 ```
 
+Debe remplazar los siguientes datos:
 
+* **IPDELHOST**: host de la instalación de mysql o mariadb. 
+* **USUARIO**: usuario de la base de datos.
+* **PASSWORD**: password de la base de datos
+* **HASHIMAGEN**: hash de la imagen desarrollada en el paso anterior
 
-//configurar mysql para el acceso remoto
-
-
-CREATE USER 'prueba'@'%' IDENTIFIED BY 'prueba';
-
-GRANT ALL PRIVILEGES ON * . * TO 'prueba'@'%';
-
-FLUSH PRIVILEGES;
